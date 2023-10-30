@@ -37,7 +37,6 @@ while True:
     if (latitud == None or longitud == None):
         print("Datos no")
         print("disponibles")
-        time.sleep(1000)
         continue
     
     t = gps.timestamp
@@ -48,5 +47,4 @@ while True:
     print('Lat:'+ latitud)
     print('Lon:'+ longitud)
     print('Horario:'+ horario)
-    time.sleep(1000)
     
