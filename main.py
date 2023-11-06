@@ -1,6 +1,7 @@
 import machine
 import time
 import dht
+import gps
 
 
 class SensorDHT11:

@@ -1,8 +1,6 @@
 from machine import Pin, UART, I2C
 import utime, time
-        # https://github.com/stlehmann/micropython-ssd1306
-
-from MicropyGPS import MicropyGPS        # https://github.com/inmcm/micropyGPS
+from MicropyGPS import MicropyGPS
 
 modulo_gps = UART(1, baudrate=9600, tx=Pin(4), rx=Pin(5))
 
@@ -23,8 +21,7 @@ def convertir(secciones):
     data = '{0:.6f}'.format(data) # 6 digitos decimales
     return str(data)
 
-
-while True:
+def location():
     time.sleep_ms(5000)
     largo = modulo_gps.any()
     if largo > 0:
@@ -38,14 +35,13 @@ while True:
     if (latitud == None or longitud == None):
         print("Datos no")
         print("disponibles")
-        continue
     
     t = gps.timestamp
-    #t[0] => horas : t[1] => minutos : t[2] => segundos
     horario = '{:02d}:{:02d}:{:02}'.format(t[0], t[1], t[2])
-    
     print('Satelites: ' + str(gps.satellites_in_use))
     print('Lat:'+ latitud)
     print('Lon:'+ longitud)
     print('Horario:'+ horario)
-    
+
+if __name__ == '__main__':
+    pass
