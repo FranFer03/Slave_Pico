@@ -25,6 +25,7 @@ def convertir(secciones):
 
 
 while True:
+    time.sleep_ms(5000)
     largo = modulo_gps.any()
     if largo > 0:
         b = modulo_gps.read(largo)
